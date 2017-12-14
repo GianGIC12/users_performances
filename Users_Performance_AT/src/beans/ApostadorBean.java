@@ -6,6 +6,8 @@
 
 package beans;
 
+import java.util.List;
+
 /**
  *
  * @author user
@@ -13,18 +15,48 @@ package beans;
 public class ApostadorBean {
     
     int id_apostador;
-    String email,fecha_registro,fecha_recarga,fecha_apuesta,fecha_retiro;
-
+    String email,fecha_registro;
+     String[] fecha_recarga,fecha_apuesta,fecha_retiro;
+     int contRecarga, contApuesta,contRetiro;
+         
+     int contadorMaximo;
+     
     public ApostadorBean() {
+        
+    fecha_apuesta= new String[1000000];
+    fecha_recarga= new String[1000000];
+    fecha_retiro= new String[1000000];    
+    
+    contApuesta=0;
+    contRecarga=0;
+    contRetiro=0;
+    
     }
-
-    public ApostadorBean(int id_apostador, String email, String fecha_registro, String fecha_recarga, String fecha_apuesta, String fecha_retiro) {
-        this.id_apostador = id_apostador;
-        this.email = email;
-        this.fecha_registro = fecha_registro;
-        this.fecha_recarga = fecha_recarga;
-        this.fecha_apuesta = fecha_apuesta;
-        this.fecha_retiro = fecha_retiro;
+    
+    
+    public void encontrarMayor(){
+        
+        
+        if (contApuesta>=contRecarga && contApuesta>=contRetiro) {
+            
+            
+            contadorMaximo=contApuesta;
+            
+        }else if (contRecarga>=contApuesta && contRecarga>=contRetiro) {
+            
+            
+         contadorMaximo=   contRecarga;
+            
+        }else   {
+            
+            contadorMaximo=contRetiro;
+            
+        }
+ 
+        
+        
+        
+        
     }
 
     public int getId_apostador() {
@@ -51,31 +83,62 @@ public class ApostadorBean {
         this.fecha_registro = fecha_registro;
     }
 
-    public String getFecha_recarga() {
+    public String[] getFecha_recarga() {
         return fecha_recarga;
     }
 
-    public void setFecha_recarga(String fecha_recarga) {
+    public void setFecha_recarga(String[] fecha_recarga) {
         this.fecha_recarga = fecha_recarga;
     }
 
-    public String getFecha_apuesta() {
+    public String[] getFecha_apuesta() {
         return fecha_apuesta;
     }
 
-    public void setFecha_apuesta(String fecha_apuesta) {
+    public void setFecha_apuesta(String[] fecha_apuesta) {
         this.fecha_apuesta = fecha_apuesta;
     }
 
-    public String getFecha_retiro() {
+    public String[] getFecha_retiro() {
         return fecha_retiro;
     }
 
-    public void setFecha_retiro(String fecha_retiro) {
+    public void setFecha_retiro(String[] fecha_retiro) {
         this.fecha_retiro = fecha_retiro;
     }
+
+    public int getContRecarga() {
+        return contRecarga;
+    }
+
+    public void setContRecarga(int contRecarga) {
+        this.contRecarga = contRecarga;
+    }
+
+    public int getContApuesta() {
+        return contApuesta;
+    }
+
+    public void setContApuesta(int contApuesta) {
+        this.contApuesta = contApuesta;
+    }
+
+    public int getContRetiro() {
+        return contRetiro;
+    }
+
+    public void setContRetiro(int contRetiro) {
+        this.contRetiro = contRetiro;
+    }
+
+    public int getContadorMaximo() {
+        return contadorMaximo;
+    }
+
+    public void setContadorMaximo(int contadorMaximo) {
+        this.contadorMaximo = contadorMaximo;
+    }
     
-    
-    
+
     
 }

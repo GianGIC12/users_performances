@@ -27,6 +27,8 @@ public class Consultas {
         email= new String[100000];
         fecha_registro= new String[100000];
         
+        contApostadores=0;
+        
     }
     
     public void iniciar(){
@@ -65,13 +67,38 @@ public class Consultas {
              String token_email= rs.getString("token_email");
              String fecha_registro= rs.getString("created_at").substring(0, 10);
              
-             System.out.println(id+"****"+email+"****"+fecha_registro+"****"+token_email);
              
+             
+             id_Apostador[contApostadores]=id;
+             
+             this.email[contApostadores]=email;
+             this.fecha_registro[contApostadores]=fecha_registro;        
+             
+             contApostadores++;
+
              
          }
         
         
     }
+    
+    
+    public void completarApuestas(){
+        
+        for (int i = 0; i < contApostadores; i++) {
+            
+            
+            System.out.println(id_Apostador[i]+"****"+email[i]+"****"+fecha_registro[i]);
+            
+            
+        }
+        
+        
+        
+        
+    }
+    
+    
     
     
     

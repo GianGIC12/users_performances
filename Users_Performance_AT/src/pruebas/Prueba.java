@@ -25,6 +25,8 @@ public class Prueba {
         c.iniciar();
         
         c.completarIds();
+        c.completarApuestas();
+        
         
         
     }
