@@ -6,6 +6,7 @@
 
 package gestion;
 
+import beans.ApostadorBean;
 import conexion.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,14 +19,14 @@ import java.sql.SQLException;
 public class Consultas {
     
     String sql;
-    int[] id_Apostador;
-    String[] email,fecha_registro,fecha_recarga,fecha_apuesta,fecha_retiro;
+   
+    ApostadorBean[] apostadores;
     int contApostadores;
 
     public Consultas() {
-        id_Apostador= new int[100000];
-        email= new String[100000];
-        fecha_registro= new String[100000];
+       
+        
+        apostadores= new ApostadorBean[10000];
         
         contApostadores=0;
         
@@ -33,15 +34,7 @@ public class Consultas {
     
     public void iniciar(){
         
-        
-        for (int i = 0; i < 100000; i++) {
-            
-            id_Apostador[i]=0;
-            email[i]="vacio";
-            fecha_registro[i]="vacio";
-            
-            
-        }
+       
         
         
         
@@ -67,12 +60,17 @@ public class Consultas {
              String token_email= rs.getString("token_email");
              String fecha_registro= rs.getString("created_at").substring(0, 10);
              
+             ApostadorBean apostador= new ApostadorBean();
+             apostador.iniciar();
              
              
-             id_Apostador[contApostadores]=id;
+             apostador.setId_apostador(id);
+             apostador.setEmail(email);
+             apostador.setFecha_registro(fecha_registro);
              
-             this.email[contApostadores]=email;
-             this.fecha_registro[contApostadores]=fecha_registro;        
+             System.out.println(id);
+             
+             apostadores[contApostadores]=apostador;
              
              contApostadores++;
 
@@ -87,8 +85,11 @@ public class Consultas {
         
         for (int i = 0; i < contApostadores; i++) {
             
+            int contApuestas=0;
             
-            System.out.println(id_Apostador[i]+"****"+email[i]+"****"+fecha_registro[i]);
+         
+            
+            
             
             
         }

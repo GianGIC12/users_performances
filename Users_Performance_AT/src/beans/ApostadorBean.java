@@ -23,15 +23,38 @@ public class ApostadorBean {
      
     public ApostadorBean() {
         
-    fecha_apuesta= new String[1000000];
-    fecha_recarga= new String[1000000];
-    fecha_retiro= new String[1000000];    
+    fecha_apuesta= new String[10000];
+    fecha_recarga= new String[10000];
+    fecha_retiro= new String[10000];    
     
     contApuesta=0;
     contRecarga=0;
     contRetiro=0;
     
     }
+    
+    
+    
+    public void iniciar(){
+        
+        
+        for (int i = 0; i < 10000; i++) {
+            
+            
+            fecha_apuesta[i]="";
+            fecha_recarga[i]="";
+            fecha_retiro[i]="";
+            
+            
+        }
+ 
+        
+        
+        
+        
+    }
+    
+    
     
     
     public void encontrarMayor(){
