@@ -20,6 +20,7 @@ public class Consultas {
     String sql;
     int[] id_Apostador;
     String[] email,fecha_registro,fecha_recarga,fecha_apuesta,fecha_retiro;
+    int contApostadores;
 
     public Consultas() {
         id_Apostador= new int[100000];
@@ -57,6 +58,17 @@ public class Consultas {
         PreparedStatement stm = objCon.getCon().prepareStatement(sql);
         ResultSet rs = stm.executeQuery();
         
+         while (rs.next()) {
+             
+             int id=rs.getInt("id");
+             String email= rs.getString("email");
+             String token_email= rs.getString("token_email");
+             String fecha_registro= rs.getString("created_at").substring(0, 10);
+             
+             System.out.println(id+"****"+email+"****"+fecha_registro+"****"+token_email);
+             
+             
+         }
         
         
     }
