@@ -49,7 +49,7 @@ public class Consultas {
          objCon.conectar();
         
          sql = "select id,email, created_at, token_email from db_apuestatotal_prod.user_user where token_email is not null and  created_at>='2017-08-01'"
-                 +" limit 10";
+                 +" limit 100";
 
         PreparedStatement stm = objCon.getCon().prepareStatement(sql);
         ResultSet rs = stm.executeQuery();
@@ -233,6 +233,78 @@ public class Consultas {
         
         
     }
+     
+     public void completarRetiros() throws SQLException{
+         
+         
+           Conexion objCon = new Conexion();
+            
+            objCon.conectar();
+        
+        for (int i = 0; i < contApostadores; i++) {
+            
+            int contRetiros=0;
+            
+            
+            sql="select idUser,response,created_at from db_apuestatotal_prod.transaction_withdraw where idUser="
+                + apostadores[i].getId_apostador() ;
+            
+            
+            
+            PreparedStatement stm = objCon.getCon().prepareStatement(sql);
+
+        ResultSet rs = stm.executeQuery();
+        
+        String[] retiro_real=new String[10000];
+            
+ 
+         while (rs.next()) {
+             
+             
+             String response=rs.getString("response");
+             String palabra= "error";
+             boolean encontrado= response.contains(palabra);
+             
+             
+             if (encontrado) {
+                 
+                 System.out.println(""+response);   
+                 
+             }else{
+                 
+                 System.out.println("No encontrado"+response);
+               
+                 retiro_real[contRetiros]=rs.getString("created_at").substring(0,10);
+                 
+                 contRetiros++;
+             }
+             
+             
+             
+             
+         }
+        
+        apostadores[i].setFecha_retiro(retiro_real);
+           apostadores[i].setContRetiro(contRetiros);
+        
+            
+            System.out.println(contRetiros);
+            for (int j = 0; j < contRetiros; j++) {
+                
+                System.out.println( apostadores[i].getFecha_retiro()[j]);     
+                
+            }
+           
+            
+            
+        }
+         
+         
+          objCon.desconectar();
+         
+         
+         
+     }
     
     
     
@@ -279,4 +351,28 @@ public class Consultas {
         
         
     }
+     
+     
+     public void recorreRetiros(){
+         
+         for (int i = 0; i < contApostadores; i++) {
+             
+             for (int j = 0; j < apostadores[i].getContRetiro(); j++) {
+                 
+                 
+                System.out.println(apostadores[i].getId_apostador()+" Fecha retiro" 
+                + apostadores[i].getFecha_retiro()[j]+" id_wallet"+ apostadores[i].getId_wallet());   
+                 
+                 
+                 
+             }
+             
+             
+         }
+         
+         
+         
+     }
+     
+     
 }

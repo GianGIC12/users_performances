@@ -29,9 +29,15 @@ public class Prueba {
        
         c.completarApuestas();
         c.recorreApuestas();
+        c.completarRetiros();
         
         c.completarRecargas();
         c.recorreRecargas();
+        c.recorreRetiros();
+        
+        
+        System.out.println("terminado");
+        
         
     }
     
