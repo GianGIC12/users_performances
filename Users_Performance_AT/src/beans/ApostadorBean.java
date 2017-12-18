@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ApostadorBean {
     
-    int id_apostador;
+    int id_apostador,id_wallet;
     String email,fecha_registro;
      String[] fecha_recarga,fecha_apuesta,fecha_retiro;
      int contRecarga, contApuesta,contRetiro;
@@ -160,6 +160,14 @@ public class ApostadorBean {
 
     public void setContadorMaximo(int contadorMaximo) {
         this.contadorMaximo = contadorMaximo;
+    }
+
+    public int getId_wallet() {
+        return id_wallet;
+    }
+
+    public void setId_wallet(int id_wallet) {
+        this.id_wallet = id_wallet;
     }
     
 

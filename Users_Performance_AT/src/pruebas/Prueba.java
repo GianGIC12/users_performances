@@ -25,9 +25,13 @@ public class Prueba {
         c.iniciar();
         
         c.completarIds();
+        c.completarIdWallet();
+       
         c.completarApuestas();
+        c.recorreApuestas();
         
-        
+        c.completarRecargas();
+        c.recorreRecargas();
         
     }
     
