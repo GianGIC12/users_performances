@@ -28,13 +28,18 @@ public class Prueba {
         c.completarIdWallet();
        
         c.completarApuestas();
-        c.recorreApuestas();
+        c.completarRecargas();
         c.completarRetiros();
         
-        c.completarRecargas();
+        
+        
+        c.recorreApuestas();
         c.recorreRecargas();
         c.recorreRetiros();
         
+        System.out.println("RESUMEN ******");
+        
+        c.completarMaximoContador();
         
         System.out.println("terminado");
         
