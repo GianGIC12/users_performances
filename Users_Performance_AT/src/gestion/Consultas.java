@@ -329,4 +329,32 @@ public class Consultas {
         
     }
 
+    public String getSql() {
+        return sql;
+    }
+
+    public void setSql(String sql) {
+        this.sql = sql;
+    }
+
+    public ApostadorBean[] getApostadores() {
+        return apostadores;
+    }
+
+    public void setApostadores(ApostadorBean[] apostadores) {
+        this.apostadores = apostadores;
+    }
+
+    public int getContApostadores() {
+        return contApostadores;
+    }
+
+    public void setContApostadores(int contApostadores) {
+        this.contApostadores = contApostadores;
+    }
+
+    
+ 
+    
+    
 }
